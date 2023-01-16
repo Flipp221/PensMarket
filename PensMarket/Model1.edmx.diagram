@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3f4936a34e947cca9d6de265040799f" Name="Diagram1">
+        <EntityTypeShape EntityType="PenModel.Company" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.Customer" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.Pen" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.Roles" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.TypeCustomer" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PenModel.TypePen" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="PenModel.FK_Pen_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="PenModel.FK_Customer_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="PenModel.FK_Customer_TypeCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="PenModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PenModel.FK_Order_Pen" ManuallyRouted="false" />
+        <AssociationConnector Association="PenModel.FK_Pen_TypePen" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

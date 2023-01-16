@@ -1,0 +1,25 @@
+﻿<Window x:Class="PensMarket.PensWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PensMarket"
+        mc:Ignorable="d"
+        Title="PensWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Back" Content="Back" FontSize="10" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="25" Height="30" Click="Back_Click"/>
+        <ListView x:Name="ListPens" HorizontalAlignment="Center" VerticalAlignment="Center" Height="350" Width="700">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" Text="{Binding Name}"/>
+                        <TextBlock Margin="10" Text="{Binding Color}"/>
+                        <TextBlock Margin="10" Text="{Binding PricePen}"/>
+                        <TextBlock Margin="10" Text="{Binding TypePen.Name}"/>
+                        <TextBlock Margin="10" Text="{Binding Company.Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
