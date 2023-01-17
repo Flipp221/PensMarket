@@ -36,5 +36,12 @@ namespace PensMarket
             ListCustomers.ItemsSource = null;
             ListCustomers.ItemsSource = MainWindow.db.Customer.ToList();
         }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            RegWindow page = new RegWindow((sender as Button).DataContext as Customer);
+            page.Show();
+            Close();
+        }
     }
 }

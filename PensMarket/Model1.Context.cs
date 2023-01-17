@@ -17,9 +17,16 @@ namespace PensMarket
     
     public partial class PenEntities : DbContext
     {
+        private static PenEntities _context;
         public PenEntities()
             : base("name=PenEntities")
         {
+        }
+        public static PenEntities GetContext()
+        {
+            if (_context == null)
+                _context = new PenEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -36,5 +36,12 @@ namespace PensMarket
             this.Close();
             menuWindow.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+            MainWindow.db.SaveChanges();
+            Refresh();
+        }
     }
 }

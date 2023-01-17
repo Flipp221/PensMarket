@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PensMarket"
         mc:Ignorable="d"
-        Title="PensWindow" Height="450" Width="800">
+        Title="PensWindow" Height="450" Width="800" IsVisibleChanged="Mouse_IsVisibleChanged">
     <Grid>
         <Button x:Name="Back" Content="Back" FontSize="10" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="25" Height="30" Click="Back_Click"/>
         <ListView x:Name="ListPens" HorizontalAlignment="Center" VerticalAlignment="Center" Height="350" Width="700">
@@ -17,9 +17,14 @@
                         <TextBlock Margin="10" Text="{Binding PricePen}"/>
                         <TextBlock Margin="10" Text="{Binding TypePen.Name}"/>
                         <TextBlock Margin="10" Text="{Binding Company.Name}"/>
+                        <StackPanel>
+                            <Button x:Name="btnReg" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,3" Padding="5" Click="btnReg_Click"></Button>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="btnAddPens" Content="Добавить" FontSize="10" Margin="79,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="104" Height="30" Click="btnAddPens_Click" RenderTransformOrigin="2.354,0.678"/>
+        <Button x:Name="btnDelete" Content="Удалить" FontSize="10" Margin="208,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="104" Height="30" Click="btnDelete_Click" RenderTransformOrigin="2.354,0.678"/>
     </Grid>
 </Window>

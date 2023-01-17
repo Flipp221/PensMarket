@@ -41,5 +41,12 @@ namespace PensMarket
                 MessageBox.Show("Error");
             }
         }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            RegWindow regWindow = new RegWindow(null);
+            regWindow.Show();
+            Close();
+        }
     }
 }

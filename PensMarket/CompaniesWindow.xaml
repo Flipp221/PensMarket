@@ -12,12 +12,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="10" Text="{Binding Name}"/>
-                        <TextBlock Margin="10" Text="{Binding City}"/>
+                        <TextBox Margin="10" Text="{Binding Name}"/>
+                        <TextBox Margin="10" Text="{Binding City}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+        <Button Content="save" HorizontalAlignment="Left" Margin="67,399,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
     </Grid>
 </Window>

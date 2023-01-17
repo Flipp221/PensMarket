@@ -17,6 +17,7 @@
         <TextBlock x:Name="TbLog"  Text="Password:"  FontSize="18" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="200" Margin="0,0,0,80"/>
         <TextBox x:Name="TLog" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="200" Margin="0,0,0,150"/>
         <PasswordBox x:Name="PPas" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="200" Margin="0,0,0,30"/>
-        <Button x:Name="BPas" Content="Enter" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="200" Margin="0,0,0,-50" Background="#FFFF8C8C" Click="BPas_Click"/>
+        <Button x:Name="BPas" Content="Enter" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Width="100" Margin="300,230,0,0" Background="#FFFF8C8C" Click="BPas_Click"/>
+        <Button x:Name="btnReg" Content="Reg" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Width="95" Margin="405,230,0,0" Background="#FFFF8C8C" Click="btnReg_Click" />
     </Grid>
 </Window>
