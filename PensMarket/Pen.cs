@@ -31,5 +31,15 @@ namespace PensMarket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
         public virtual TypePen TypePen { get; set; }
+        public int CompareTo(object other)
+        {
+            var obj = other as Pen;
+            return Name.CompareTo(obj.Name);
+        }
+        public int CompareTo(object other, int a)
+        {
+            var obj = other as keyboard;
+            return id_Key_illumination_color?.CompareTo(obj.id_Key_illumination_color) ?? 0;
+        }
     }
 }

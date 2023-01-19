@@ -26,5 +26,9 @@
         </ListView>
         <Button x:Name="btnAddPens" Content="Добавить" FontSize="10" Margin="79,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="104" Height="30" Click="btnAddPens_Click" RenderTransformOrigin="2.354,0.678"/>
         <Button x:Name="btnDelete" Content="Удалить" FontSize="10" Margin="208,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="104" Height="30" Click="btnDelete_Click" RenderTransformOrigin="2.354,0.678"/>
+        <ComboBox x:Name="SortCB"
+                  HorizontalAlignment="Left" 
+                  MinHeight="20" MinWidth="180"
+                  Width="204" SelectionChanged="SortCB_SelectionChanged" Margin="56,10,0,397"/>
     </Grid>
 </Window>
