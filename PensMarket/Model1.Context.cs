@@ -15,17 +15,17 @@ namespace PensMarket
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PenEntities : DbContext
+    public partial class PenEntities1 : DbContext
     {
-        private static PenEntities _context;
-        public PenEntities()
-            : base("name=PenEntities")
+        private static PenEntities1 _context;
+        public PenEntities1()
+            : base("name=PenEntities1")
         {
         }
-        public static PenEntities GetContext()
+        public static PenEntities1 GetContext()
         {
             if (_context == null)
-                _context = new PenEntities();
+                _context = new PenEntities1();
             return _context;
         }
     
@@ -37,7 +37,7 @@ namespace PensMarket
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Pen> Pen { get; set; }
+        public virtual DbSet<Pens> Pens { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeCustomer> TypeCustomer { get; set; }

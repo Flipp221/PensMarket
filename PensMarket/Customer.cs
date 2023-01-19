@@ -25,9 +25,9 @@ namespace PensMarket
         public string Surname { get; set; }
         public string Patronymic { get; set; }
         public string Phone { get; set; }
+        public string Password { get; set; }
         public Nullable<int> id_TypeCustomer { get; set; }
         public Nullable<int> id_Role { get; set; }
-        public string Password { get; set; }
     
         public virtual Roles Roles { get; set; }
         public virtual TypeCustomer TypeCustomer { get; set; }

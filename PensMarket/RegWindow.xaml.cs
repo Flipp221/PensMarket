@@ -27,7 +27,7 @@ namespace PensMarket
                 _customer = selected;
 
             DataContext = _customer;
-            cbType.ItemsSource = PenEntities.GetContext().TypeCustomer.ToList();
+            cbType.ItemsSource = PenEntities1.GetContext().TypeCustomer.ToList();
 
         }
 
@@ -58,11 +58,11 @@ namespace PensMarket
             }
             if (_customer.id_Customer == 0)
             {
-                PenEntities.GetContext().Customer.Add(_customer);
+                PenEntities1.GetContext().Customer.Add(_customer);
             }
             try
             {
-                PenEntities.GetContext().SaveChanges();
+                PenEntities1.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена");
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище PenModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище PenModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="id_Company" />
@@ -37,7 +37,7 @@
           <Property Name="Buy_Done" Type="bit" />
           <Property Name="PriceOrder" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Pen">
+        <EntityType Name="Pens">
           <Key>
             <PropertyRef Name="id_Pen" />
           </Key>
@@ -116,10 +116,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Pen">
-          <End Role="Pen" Type="Self.Pen" Multiplicity="0..1" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pen">
+            <Principal Role="Pens">
               <PropertyRef Name="id_Pen" />
             </Principal>
             <Dependent Role="Order">
@@ -129,24 +129,24 @@
         </Association>
         <Association Name="FK_Pen_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Pen" Type="Self.Pen" Multiplicity="*" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="id_Company" />
             </Principal>
-            <Dependent Role="Pen">
+            <Dependent Role="Pens">
               <PropertyRef Name="id_Company" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pen_TypePen">
           <End Role="TypePen" Type="Self.TypePen" Multiplicity="1" />
-          <End Role="Pen" Type="Self.Pen" Multiplicity="*" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypePen">
               <PropertyRef Name="Id_TypePen" />
             </Principal>
-            <Dependent Role="Pen">
+            <Dependent Role="Pens">
               <PropertyRef Name="id_TypePen" />
             </Dependent>
           </ReferentialConstraint>
@@ -186,7 +186,7 @@
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pen" EntityType="Self.Pen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pens" EntityType="Self.Pens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
@@ -204,19 +204,20 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Pen" Association="Self.FK_Order_Pen">
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Pen_Company" Association="Self.FK_Pen_Company">
             <End Role="Company" EntitySet="Company" />
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
           </AssociationSet>
           <AssociationSet Name="FK_Pen_TypePen" Association="Self.FK_Pen_TypePen">
             <End Role="TypePen" EntitySet="TypePen" />
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -227,7 +228,7 @@
           <Property Name="id_Company" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Pen" Relationship="Self.FK_Pen_Company" FromRole="Company" ToRole="Pen" />
+          <NavigationProperty Name="Pens" Relationship="Self.FK_Pen_Company" FromRole="Company" ToRole="Pens" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -238,12 +239,12 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_TypeCustomer" Type="Int32" />
           <Property Name="id_Role" Type="Int32" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Customer_Roles" FromRole="Customer" ToRole="Roles" />
           <NavigationProperty Name="TypeCustomer" Relationship="Self.FK_Customer_TypeCustomer" FromRole="Customer" ToRole="TypeCustomer" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -256,9 +257,9 @@
           <Property Name="Buy_Done" Type="Boolean" />
           <Property Name="PriceOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-          <NavigationProperty Name="Pen" Relationship="Self.FK_Order_Pen" FromRole="Order" ToRole="Pen" />
+          <NavigationProperty Name="Pens" Relationship="Self.FK_Order_Pen" FromRole="Order" ToRole="Pens" />
         </EntityType>
-        <EntityType Name="Pen">
+        <EntityType Name="Pens">
           <Key>
             <PropertyRef Name="id_Pen" />
           </Key>
@@ -268,9 +269,9 @@
           <Property Name="PricePen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_TypePen" Type="Int32" Nullable="false" />
           <Property Name="id_Company" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Pen_Company" FromRole="Pen" ToRole="Company" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Pen" FromRole="Pen" ToRole="Order" />
-          <NavigationProperty Name="TypePen" Relationship="Self.FK_Pen_TypePen" FromRole="Pen" ToRole="TypePen" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Pen_Company" FromRole="Pens" ToRole="Company" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Pen" FromRole="Pens" ToRole="Order" />
+          <NavigationProperty Name="TypePen" Relationship="Self.FK_Pen_TypePen" FromRole="Pens" ToRole="TypePen" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -304,16 +305,16 @@
           </Key>
           <Property Name="Id_TypePen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Pen" Relationship="Self.FK_Pen_TypePen" FromRole="TypePen" ToRole="Pen" />
+          <NavigationProperty Name="Pens" Relationship="Self.FK_Pen_TypePen" FromRole="TypePen" ToRole="Pens" />
         </EntityType>
         <Association Name="FK_Pen_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Pen" Type="Self.Pen" Multiplicity="*" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="id_Company" />
             </Principal>
-            <Dependent Role="Pen">
+            <Dependent Role="Pens">
               <PropertyRef Name="id_Company" />
             </Dependent>
           </ReferentialConstraint>
@@ -355,10 +356,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Pen">
-          <End Role="Pen" Type="Self.Pen" Multiplicity="0..1" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pen">
+            <Principal Role="Pens">
               <PropertyRef Name="id_Pen" />
             </Principal>
             <Dependent Role="Order">
@@ -368,28 +369,28 @@
         </Association>
         <Association Name="FK_Pen_TypePen">
           <End Role="TypePen" Type="Self.TypePen" Multiplicity="1" />
-          <End Role="Pen" Type="Self.Pen" Multiplicity="*" />
+          <End Role="Pens" Type="Self.Pens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypePen">
               <PropertyRef Name="Id_TypePen" />
             </Principal>
-            <Dependent Role="Pen">
+            <Dependent Role="Pens">
               <PropertyRef Name="id_TypePen" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PenEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PenEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="Pen" EntityType="Self.Pen" />
+          <EntitySet Name="Pens" EntityType="Self.Pens" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" />
           <EntitySet Name="TypePen" EntityType="Self.TypePen" />
           <AssociationSet Name="FK_Pen_Company" Association="Self.FK_Pen_Company">
             <End Role="Company" EntitySet="Company" />
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Roles" Association="Self.FK_Customer_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -404,12 +405,12 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Pen" Association="Self.FK_Order_Pen">
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Pen_TypePen" Association="Self.FK_Pen_TypePen">
             <End Role="TypePen" EntitySet="TypePen" />
-            <End Role="Pen" EntitySet="Pen" />
+            <End Role="Pens" EntitySet="Pens" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -458,7 +459,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PenModelContainer" CdmEntityContainer="PenEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PenModelContainer" CdmEntityContainer="PenEntities1">
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="PenModel.Company">
               <MappingFragment StoreEntitySet="Company">
@@ -471,12 +472,12 @@
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="PenModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="id_Customer" ColumnName="id_Customer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="id_TypeCustomer" ColumnName="id_TypeCustomer" />
                 <ScalarProperty Name="id_Role" ColumnName="id_Role" />
               </MappingFragment>
@@ -494,9 +495,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pen">
-            <EntityTypeMapping TypeName="PenModel.Pen">
-              <MappingFragment StoreEntitySet="Pen">
+          <EntitySetMapping Name="Pens">
+            <EntityTypeMapping TypeName="PenModel.Pens">
+              <MappingFragment StoreEntitySet="Pens">
                 <ScalarProperty Name="id_Pen" ColumnName="id_Pen" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Color" ColumnName="Color" />

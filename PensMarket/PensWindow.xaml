@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="PensWindow" Height="450" Width="800" IsVisibleChanged="Mouse_IsVisibleChanged">
     <Grid>
+        <ComboBox x:Name="CBNumberWrite" SelectedIndex="0" 
+                  SelectionChanged="CBNumberWrite_SelectionChanged" 
+                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Visibility="Hidden"/>
         <Button x:Name="Back" Content="Back" FontSize="10" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="25" Height="30" Click="Back_Click"/>
         <ListView x:Name="ListPens" HorizontalAlignment="Center" VerticalAlignment="Center" Height="350" Width="700">
             <ListView.ItemTemplate>

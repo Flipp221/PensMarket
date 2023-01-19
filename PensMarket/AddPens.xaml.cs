@@ -19,16 +19,16 @@ namespace PensMarket
     /// </summary>
     public partial class AddPens : Window
     {
-        private Pen _pen = new Pen();
-        public AddPens(Pen selected)
+        private Pens _pen = new Pens();
+        public AddPens(Pens selected)
         {
             InitializeComponent();
             if (selected != null)
                 _pen = selected;
 
             DataContext = _pen;
-            cbCompany.ItemsSource = PenEntities.GetContext().Company.ToList();
-            cbTypePen.ItemsSource = PenEntities.GetContext().TypePen.ToList();
+            cbCompany.ItemsSource = PenEntities1.GetContext().Company.ToList();
+            cbTypePen.ItemsSource = PenEntities1.GetContext().TypePen.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -54,11 +54,11 @@ namespace PensMarket
             }
             if (_pen.id_Pen == 0)
             {
-                PenEntities.GetContext().Pen.Add(_pen);
+                PenEntities1.GetContext().Pens.Add(_pen);
             }
             try
             {
-                PenEntities.GetContext().SaveChanges();
+                PenEntities1.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена");
                 PensWindow pensWindow = new PensWindow();
                 pensWindow.Show();

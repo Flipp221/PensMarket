@@ -20,7 +20,7 @@ namespace PensMarket
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static PenEntities db = new PenEntities();
+        public static PenEntities1 db = new PenEntities1();
         public MainWindow()
         {
             InitializeComponent();

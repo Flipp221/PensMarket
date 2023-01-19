@@ -22,6 +22,6 @@ namespace PensMarket
         public string PriceOrder { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Pen Pen { get; set; }
+        public virtual Pens Pens { get; set; }
     }
 }

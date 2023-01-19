@@ -17,13 +17,13 @@ namespace PensMarket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypePen()
         {
-            this.Pen = new HashSet<Pen>();
+            this.Pens = new HashSet<Pens>();
         }
     
         public int Id_TypePen { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pen> Pen { get; set; }
+        public virtual ICollection<Pens> Pens { get; set; }
     }
 }

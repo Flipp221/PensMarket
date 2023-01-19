@@ -12,10 +12,10 @@ namespace PensMarket
     using System;
     using System.Collections.Generic;
     
-    public partial class Pen
+    public partial class Pens
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pen()
+        public Pens()
         {
             this.Order = new HashSet<Order>();
         }
@@ -33,13 +33,18 @@ namespace PensMarket
         public virtual TypePen TypePen { get; set; }
         public int CompareTo(object other)
         {
-            var obj = other as Pen;
+            var obj = other as Pens;
             return Name.CompareTo(obj.Name);
         }
         public int CompareTo(object other, int a)
         {
-            var obj = other as keyboard;
-            return id_Key_illumination_color?.CompareTo(obj.id_Key_illumination_color) ?? 0;
+            var obj = other as Pens;
+            return id_TypePen.CompareTo(obj.id_TypePen);
+        }
+        public int CompareTo(object other, int b, int c)
+        {
+            var obj = other as Pens;
+            return Color.CompareTo(obj.Color);
         }
     }
 }

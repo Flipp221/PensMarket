@@ -17,7 +17,7 @@ namespace PensMarket
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
-            this.Pen = new HashSet<Pen>();
+            this.Pens = new HashSet<Pens>();
         }
     
         public int id_Company { get; set; }
@@ -25,6 +25,6 @@ namespace PensMarket
         public string City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pen> Pen { get; set; }
+        public virtual ICollection<Pens> Pens { get; set; }
     }
 }
